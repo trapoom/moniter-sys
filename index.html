@@ -1,266 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>moniter | Secure Debian Repository</title>
+<title>MONITER // APT CORE</title>
+
 
 <style>
-:root{
-    --bg:#0f172a;
-    --card:#1e293b;
-    --border:#334155;
-    --text:#e2e8f0;
-    --muted:#94a3b8;
-    --primary:#38bdf8;
-    --success:#22c55e;
-    --code:#020617;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
+
+
+:root{
+
+--bg:#020202;
+--fg:#f1f1f1;
+--dim:#666;
+--line:#222;
+
+}
+
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:30px;
+
+
+height:100vh;
+
+overflow:hidden;
+
+background:
+
+radial-gradient(
+ellipse at center,
+#1a1a1a 0%,
+#050505 45%,
+#000 100%
+);
+
+
+font-family:
+"Share Tech Mono",
+monospace;
+
+
+color:white;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+perspective:1200px;
+
+
 }
 
-.container{
-    width:100%;
-    max-width:760px;
+
+
+/* =========================
+   BACKGROUND DATA STREAM
+========================= */
+
+
+#stream{
+
+
+position:absolute;
+
+inset:0;
+
+overflow:hidden;
+
+opacity:.35;
+
+font-size:13px;
+
+color:#777;
+
 }
 
-header{
-    text-align:center;
-    margin-bottom:32px;
+
+.stream-line{
+
+
+white-space:nowrap;
+
+animation:
+
+scroll 20s linear infinite;
+
+
 }
 
-h1{
-    font-size:3rem;
-    color:var(--primary);
-    font-weight:800;
+
+
+@keyframes scroll{
+
+
+from{
+
+transform:translateY(100vh)
+
 }
+
+to{
+
+transform:translateY(-120vh)
+
+}
+
+
+}
+
+
+
+
+/* =========================
+ CRT SCREEN EFFECT
+========================= */
+
+
+.crt{
+
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+
+background:
+
+
+linear-gradient(
+
+rgba(255,255,255,.02) 50%,
+
+rgba(0,0,0,.15) 50%
+
+);
+
+
+background-size:
+
+100% 4px;
+
+
+z-index:50;
+
+
+}
+
+
+
+.noise{
+
+
+position:absolute;
+
+inset:-50%;
+
+
+background:
+
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+
+
+opacity:.08;
+
+
+animation:
+
+noise .15s infinite;
+
+
+}
+
+
+
+@keyframes noise{
+
+0%{transform:translate(0)}
+25%{transform:translate(-3%)}
+50%{transform:translate(3%)}
+75%{transform:translate(-2%)}
+100%{transform:translate(0)}
+
+}
+
+
+
+.screen{
+
+
+animation:
+
+flicker .12s infinite;
+
+
+}
+
+
+
+@keyframes flicker{
+
+
+0%{opacity:.96}
+
+50%{opacity:1}
+
+100%{opacity:.97}
+
+
+}
+
+
+
+/* =========================
+ TERMINAL
+========================= */
+
+
+.window{
+
+
+width:min(1000px,92vw);
+
+
+background:
+
+rgba(5,5,5,.65);
+
+
+border:
+
+1px solid #333;
+
+
+border-radius:18px;
+
+
+backdrop-filter:
+
+blur(15px);
+
+
+
+box-shadow:
+
+
+0 0 100px black,
+
+0 0 30px white inset;
+
+
+
+overflow:hidden;
+
+
+z-index:10;
+
+
+
+transform:
+
+rotateX(2deg);
+
+
+
+}
+
+
+
+.header{
+
+
+height:45px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+padding:0 20px;
+
+
+background:
+
+rgba(255,255,255,.05);
+
+
+
+border-bottom:
+
+1px solid #333;
+
+
+}
+
+
+.dot{
+
+
+height:12px;
+
+width:12px;
+
+border-radius:50%;
+
+background:#777;
+
+margin-right:8px;
+
+
+}
+
+
+.header span{
+
+
+margin-left:15px;
+
+color:#777;
+
+font-size:14px;
+
+
+}
+
+
+
+
+
+.main{
+
+
+padding:45px;
+
+
+
+}
+
+
+
+
+.logo{
+
+
+font-size:80px;
+
+font-weight:bold;
+
+
+letter-spacing:-5px;
+
+
+text-shadow:
+
+0 0 25px white;
+
+
+}
+
+
+
+
+.cursor{
+
+
+display:inline-block;
+
+width:18px;
+
+height:70px;
+
+
+background:white;
+
+
+animation:
+
+blink 1s infinite;
+
+
+}
+
+
+@keyframes blink{
+
+
+50%{
+
+opacity:0;
+
+}
+
+}
+
+
+
+
 
 .subtitle{
-    margin-top:12px;
-    color:var(--muted);
-    font-size:1.05rem;
+
+
+margin-top:15px;
+
+color:#888;
+
+font-size:18px;
+
+
 }
 
-.card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:32px;
+
+
+
+.status{
+
+
+margin-top:35px;
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:15px;
+
+
 }
 
-.card h2{
-    margin-bottom:25px;
-    font-size:1.35rem;
+
+
+.box{
+
+
+border:
+
+1px solid #333;
+
+
+background:
+
+rgba(255,255,255,.03);
+
+
+padding:15px;
+
+
 }
 
-.step{
-    margin-bottom:28px;
+
+
+.box b{
+
+
+font-size:28px;
+
 }
 
-.step:last-child{
-    margin-bottom:0;
+
+
+.box small{
+
+color:#777;
+
 }
 
-.step-title{
-    margin-bottom:10px;
-    font-size:.9rem;
-    color:var(--primary);
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.08em;
+
+
+
+.section{
+
+
+margin-top:40px;
+
 }
 
-.code-block{
-    background:var(--code);
-    border:1px solid var(--border);
-    border-radius:10px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 16px;
-    overflow-x:auto;
-    gap:15px;
+
+
+.title{
+
+
+color:#888;
+
+margin-bottom:12px;
+
 }
 
-.code-block code{
-    white-space:nowrap;
-    font-family:Consolas,Menlo,monospace;
-    color:#f8fafc;
+
+
+.console{
+
+
+background:#000;
+
+
+border:
+
+1px solid #333;
+
+
+padding:20px;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+gap:20px;
+
+
 }
 
-.copy-btn{
-    background:none;
-    border:1px solid var(--primary);
-    color:var(--primary);
-    border-radius:6px;
-    padding:8px 14px;
-    cursor:pointer;
-    transition:.2s;
-    flex-shrink:0;
+
+
+code{
+
+
+font-size:14px;
+
+overflow:auto;
+
+
 }
 
-.copy-btn:hover{
-    background:var(--primary);
-    color:#000;
+
+code::before{
+
+content:"root@moniter:$ ";
+
+color:#555;
+
+
 }
 
-.copy-btn.copied{
-    color:var(--success);
-    border-color:var(--success);
+
+
+button{
+
+
+background:white;
+
+border:none;
+
+
+padding:10px 18px;
+
+
+cursor:pointer;
+
+
+font-family:inherit;
+
+
 }
 
-.info{
-    margin-top:30px;
-    padding:18px;
-    border-radius:10px;
-    background:#0b1220;
-    border:1px solid var(--border);
+
+
+button:hover{
+
+background:#aaa;
+
 }
 
-.info ul{
-    margin-left:18px;
-    margin-top:10px;
-    color:var(--muted);
+
+
+
+.logs{
+
+
+margin-top:35px;
+
+height:120px;
+
+overflow:hidden;
+
+
+border:
+
+1px solid #222;
+
+
+padding:15px;
+
+
+color:#777;
+
+
+font-size:13px;
+
+
 }
 
-.info li{
-    margin:8px 0;
-}
+
+
 
 footer{
-    margin-top:30px;
-    text-align:center;
-    color:var(--muted);
-    font-size:.9rem;
+
+
+margin-top:30px;
+
+text-align:center;
+
+color:#555;
+
+
 }
 
-footer a{
-    color:var(--primary);
-    text-decoration:none;
-}
 
-footer a:hover{
-    text-decoration:underline;
-}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="container">
 
-<header>
-    <h1>moniter</h1>
-    <p class="subtitle">
-        Secure Debian and Ubuntu Package Repository
-    </p>
-</header>
+<div id="stream"></div>
 
-<div class="card">
 
-<h2>Quick Installation</h2>
+<div class="noise"></div>
 
-<div class="step">
-<div class="step-title">
-Step 1 — Configure Repository
+<div class="crt"></div>
+
+
+
+
+<div class="window screen">
+
+
+<div class="header">
+
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+
+
+<span>
+MONITER // APT CORE SYSTEM
+</span>
+
+
 </div>
 
-<div class="code-block">
+
+
+
+<div class="main">
+
+
+
+<div class="logo">
+
+moniter<span class="cursor"></span>
+
+</div>
+
+
+<div class="subtitle">
+
+SECURE DISTRIBUTED PACKAGE INFRASTRUCTURE
+
+</div>
+
+
+
+
+<div class="status">
+
+
+<div class="box">
+
+<b id="cpu">72%</b>
+
+<br>
+
+<small>CPU LOAD</small>
+
+</div>
+
+
+
+<div class="box">
+
+<b>ONLINE</b>
+
+<br>
+
+<small>REPOSITORY</small>
+
+</div>
+
+
+
+<div class="box">
+
+<b id="packets">
+
+0000
+
+</b>
+
+<br>
+
+<small>PACKETS</small>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="section">
+
+
+<div class="title">
+
+INSTALL REPOSITORY
+
+</div>
+
+
+
+<div class="console">
+
+
 <code id="setup">
+
 curl -fsSL https://trapoom.github.io/debian-apt-push/setup.sh | sudo bash
+
 </code>
 
-<button class="copy-btn" onclick="copyText('setup',this)">
-Copy
+
+<button onclick="copy('setup',this)">
+COPY
 </button>
-</div>
+
 
 </div>
 
-<div class="step">
 
-<div class="step-title">
-Step 2 — Install Package
+
 </div>
 
-<div class="code-block">
+
+
+
+
+<div class="section">
+
+
+<div class="title">
+
+DEPLOY PACKAGE
+
+</div>
+
+
+<div class="console">
+
 
 <code id="install">
+
 sudo apt install moniter
+
 </code>
 
-<button class="copy-btn" onclick="copyText('install',this)">
-Copy
+
+<button onclick="copy('install',this)">
+COPY
 </button>
 
-</div>
 
 </div>
 
-<div class="info">
-
-<strong>Features</strong>
-
-<ul>
-<li>Secure GPG signature verification</li>
-<li>Automatic repository configuration</li>
-<li>Compatible with Debian and Ubuntu</li>
-<li>APT signed-by keyring support</li>
-<li>Safe to run multiple times</li>
-</ul>
 
 </div>
 
-</div>
+
+
+
+
+<div class="logs" id="logs"></div>
+
+
+
+
 
 <footer>
 
-Developed by
-<a href="https://github.com/trapoom" target="_blank">
-trapoom
-</a>
+SYSTEM MAINTAINED BY trapoom
 
 </footer>
 
+
+
 </div>
 
+
+</div>
+
+
+
+
 <script>
-function copyText(id,button){
 
-const text=document.getElementById(id).innerText;
 
-navigator.clipboard.writeText(text).then(()=>{
+const stream=document.getElementById("stream");
 
-button.textContent="Copied";
-button.classList.add("copied");
 
-setTimeout(()=>{
+const logs=document.getElementById("logs");
 
-button.textContent="Copy";
-button.classList.remove("copied");
 
-},2000);
 
-});
+const data=[
+
+
+"kernel: initializing secure boot",
+
+"apt: verifying repository signature",
+
+"gpg: public key trusted",
+
+"systemd: daemon started",
+
+"net: packet routed",
+
+"ssh: authentication accepted",
+
+"mirror: synchronization complete",
+
+"dpkg: package database updated",
+
+"cache: rebuilding index",
+
+"daemon: heartbeat received",
+
+"WARNING: unstable signal detected",
+
+"ERROR: recovering corrupted frame",
+
+"CORE: quantum checksum verified",
+
+"NODE: distributed sync complete"
+
+
+];
+
+
+
+
+
+function createStream(){
+
+
+let e=document.createElement("div");
+
+
+e.className="stream-line";
+
+
+e.style.marginTop=
+Math.random()*500+"px";
+
+
+e.innerHTML=
+
+"["
++
+Math.random().toString(16).slice(2,8)
++
+"] "
++
+data[Math.floor(Math.random()*data.length)]
++
+" :: "
++
+Math.random().toString(16).slice(2,12);
+
+
+
+stream.appendChild(e);
+
+
+
+setTimeout(()=>e.remove(),20000);
+
+
 
 }
+
+
+
+setInterval(createStream,120);
+
+
+
+
+
+
+function addLog(){
+
+
+let e=document.createElement("div");
+
+
+e.innerHTML=
+
+"> "
++
+new Date().toLocaleTimeString()
++
+" "
++
+data[Math.floor(Math.random()*data.length)];
+
+
+
+logs.appendChild(e);
+
+
+
+if(logs.children.length>8)
+
+logs.children[0].remove();
+
+
+
+}
+
+
+setInterval(addLog,500);
+
+
+
+
+
+
+
+setInterval(()=>{
+
+
+document.getElementById("cpu").innerText=
+
+Math.floor(
+Math.random()*40+50
+)+"%";
+
+
+document.getElementById("packets").innerText=
+
+Math.floor(
+Math.random()*9999
+);
+
+
+
+},800);
+
+
+
+
+
+function copy(id,b){
+
+
+navigator.clipboard.writeText(
+
+document.getElementById(id).innerText
+
+);
+
+
+b.innerText="COPIED";
+
+
+setTimeout(()=>b.innerText="COPY",1500);
+
+
+}
+
+
+
 </script>
+
 
 </body>
 </html>
