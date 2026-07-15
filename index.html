@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>moniter | Secure Debian Repository</title>
+
+<style>
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --border:#334155;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+    --primary:#38bdf8;
+    --success:#22c55e;
+    --code:#020617;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:760px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+h1{
+    font-size:3rem;
+    color:var(--primary);
+    font-weight:800;
+}
+
+.subtitle{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:1.05rem;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:32px;
+}
+
+.card h2{
+    margin-bottom:25px;
+    font-size:1.35rem;
+}
+
+.step{
+    margin-bottom:28px;
+}
+
+.step:last-child{
+    margin-bottom:0;
+}
+
+.step-title{
+    margin-bottom:10px;
+    font-size:.9rem;
+    color:var(--primary);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+}
+
+.code-block{
+    background:var(--code);
+    border:1px solid var(--border);
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
+    overflow-x:auto;
+    gap:15px;
+}
+
+.code-block code{
+    white-space:nowrap;
+    font-family:Consolas,Menlo,monospace;
+    color:#f8fafc;
+}
+
+.copy-btn{
+    background:none;
+    border:1px solid var(--primary);
+    color:var(--primary);
+    border-radius:6px;
+    padding:8px 14px;
+    cursor:pointer;
+    transition:.2s;
+    flex-shrink:0;
+}
+
+.copy-btn:hover{
+    background:var(--primary);
+    color:#000;
+}
+
+.copy-btn.copied{
+    color:var(--success);
+    border-color:var(--success);
+}
+
+.info{
+    margin-top:30px;
+    padding:18px;
+    border-radius:10px;
+    background:#0b1220;
+    border:1px solid var(--border);
+}
+
+.info ul{
+    margin-left:18px;
+    margin-top:10px;
+    color:var(--muted);
+}
+
+.info li{
+    margin:8px 0;
+}
+
+footer{
+    margin-top:30px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+footer a{
+    color:var(--primary);
+    text-decoration:none;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>moniter</h1>
+    <p class="subtitle">
+        Secure Debian and Ubuntu Package Repository
+    </p>
+</header>
+
+<div class="card">
+
+<h2>Quick Installation</h2>
+
+<div class="step">
+<div class="step-title">
+Step 1 — Configure Repository
+</div>
+
+<div class="code-block">
+<code id="setup">
+curl -fsSL https://trapoom.github.io/debian-apt-push/setup.sh | sudo bash
+</code>
+
+<button class="copy-btn" onclick="copyText('setup',this)">
+Copy
+</button>
+</div>
+
+</div>
+
+<div class="step">
+
+<div class="step-title">
+Step 2 — Install Package
+</div>
+
+<div class="code-block">
+
+<code id="install">
+sudo apt install moniter
+</code>
+
+<button class="copy-btn" onclick="copyText('install',this)">
+Copy
+</button>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<strong>Features</strong>
+
+<ul>
+<li>Secure GPG signature verification</li>
+<li>Automatic repository configuration</li>
+<li>Compatible with Debian and Ubuntu</li>
+<li>APT signed-by keyring support</li>
+<li>Safe to run multiple times</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer>
+
+Developed by
+<a href="https://github.com/trapoom" target="_blank">
+trapoom
+</a>
+
+</footer>
+
+</div>
+
+<script>
+function copyText(id,button){
+
+const text=document.getElementById(id).innerText;
+
+navigator.clipboard.writeText(text).then(()=>{
+
+button.textContent="Copied";
+button.classList.add("copied");
+
+setTimeout(()=>{
+
+button.textContent="Copy";
+button.classList.remove("copied");
+
+},2000);
+
+});
+
+}
+</script>
+
+</body>
+</html>
