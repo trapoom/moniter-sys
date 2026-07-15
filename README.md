@@ -203,7 +203,7 @@ curl --proto '=https' --tlsv1.2 -fsSL https://sh.rustup.rs | sh
 
 ```bash
 git clone https://github.com/trapoom/moniter-sys/.git
-cd debian-apt-push
+cd moniter-sys
 ```
 
 ---
