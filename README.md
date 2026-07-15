@@ -62,7 +62,7 @@ arm64
 ### Step 1 - Add repository
 
 ```bash
-curl -fsSL hhttps://github.com/trapoom/moniter-sys/setup.sh | sudo bash
+curl -fsSL https://github.com/trapoom/moniter-sys/setup.sh | sudo bash
 ```
 
 The installer will:
