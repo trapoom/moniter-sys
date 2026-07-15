@@ -7,7 +7,7 @@ set -Eeuo pipefail
 ########################################
 
 USER_NAME="trapoom"
-REPO_NAME="debian-apt-push"
+REPO_NAME="moniter-sys"
 
 REPO_URL="https://${USER_NAME}.github.io/${REPO_NAME}"
 KEY_URL="${REPO_URL}/traphumi-archive-keyring.gpg"
