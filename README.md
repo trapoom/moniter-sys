@@ -200,7 +200,7 @@ Each subsystem has a clearly defined responsibility, allowing the project to rem
 
 # Threading Model
 
-`monitor-sys` separates user interaction from telemetry updates to maintain a responsive interface during continuous monitoring.
+`monitor` separates user interaction from telemetry updates to maintain a responsive interface during continuous monitoring.
 
 The architecture consists of two primary execution paths.
 
@@ -385,7 +385,7 @@ For Debian-based distributions:
 
 ```bash
 sudo apt update
-sudo apt install monitor-sys
+sudo apt install monitor
 ```
 
 ---
