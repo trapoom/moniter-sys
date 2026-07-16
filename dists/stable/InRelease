@@ -4,40 +4,41 @@ Hash: SHA512
 Architectures: amd64
 Codename: stable
 Components: main
-Date: Wed, 15 Jul 2026 18:12:16 +0000
+Date: Thu, 16 Jul 2026 05:36:58 +0000
 Description: traphumi official package repository
 Label: traphumi-archive
 Origin: traphumi
 Suite: stable
 MD5Sum:
- c1ca27ce896b3e727e1698f84545afc1              198 Release
+ 0207640d3c16d5f0798b977d581cf398              198 Release
  5d24c93fd21ebe778ed54314de518fae              395 main/binary-amd64/Packages
- 92e143b254e0de46e5330b0e530c399a              314 main/binary-amd64/Packages.gz
+ 4ff472946ae8884fcb7bf9c4626ac51b              314 main/binary-amd64/Packages.gz
 SHA1:
- d471c333fa8a4509706598d4ab3b7ee600eba143              198 Release
+ 69c4352eac39c1b21f0b3004199fc8d0c82fe491              198 Release
  9b4c44a541ff22a72f2f14ac0b2776b7edaa14b9              395 main/binary-amd64/Packages
- 163f0a1ff528d52139c4885f1dd7adc59fe9953e              314 main/binary-amd64/Packages.gz
+ e75250bdf47806c9c92f579948d4dfe1a74fe4a7              314 main/binary-amd64/Packages.gz
 SHA256:
- c8d81617680c2ddf24831982743d94ef9d11ad2b8bb3837532550c5b6c7025fb              198 Release
+ 1da3d65d6c630ee12229319b004f2eb09b05da855eee1659bb1c2a992f5e75d8              198 Release
  9e0596dfe61354c4e7593d72e40af35d6173949306f94a07cb94f7d256f1b8da              395 main/binary-amd64/Packages
- 5d65c9162cd314c02209dea9ecfa83253c65473dcad21312c34c813cb4c76d53              314 main/binary-amd64/Packages.gz
+ 2611169179940e09c2065b3091f4ad86aa456f97e20f104c20c274d661efd95d              314 main/binary-amd64/Packages.gz
 SHA512:
- e8eb1145a5e51230a46cd05e27caa1f1f0cda50887574b69c7bb2305ec59499e416c89a88defc251cc95f8449a1f718a971860d857f12be796d2373452b91332              198 Release
+ 0ee84f37e8fbae7adf343ac961f894fa67702e6c0261802e27b68dddfeb4d45308966af1798bf6d756e18625abaeaa9ada3642e08c127d7d1f5019cf5c5476a7              198 Release
  ce5236d0651c207f5af316f53be1b842403d6c62e6468b3ea75af0ec6a0d00d001ce83a74d06ab964990b5347b56582c285a402c723339697b5947db1a82da95              395 main/binary-amd64/Packages
- 41c87a5b29bb2d6010800dc1079c1c695e850fd45d43282b1b0c3eeea4e2d301d07425206cfff2eb105a198d3eb178e1969bcdcad67e429e8ad64d4847479e2e              314 main/binary-amd64/Packages.gz
+ 0ac689daee97150a2d351be918a83a56cbb675f7fa635dc0edcbbdcbeef9a15e3c58d6757ec51223db64438f85aa00c92c9cd21048a576f3ccd8f7ca7cfba5f5              314 main/binary-amd64/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEExMbT8XdtGlta3xpnf46zguOry34FAmpXzcEACgkQf46zguOr
-y34Tsw//SThej6oTRk08e/vv4EqmfVBY8H8unvhv+g5lrU25/rp5802f2uQoKDCd
-iBgXKcUf4GSVamOdyFMFgqYUkyzjcoAr7CKyO5DTv6CsaUg0TtgI3Vxvk6s9sUDI
-QLol39cp3uicBnaP0utIFQRchM+G6gv44WBQ3HCW0H7JTbwznKN3hCxe7XmGyBTM
-FNBpFkvGQnzhoyqSJBZqUbXPoUe9+QnmOdUbC27xIfR9Mul+j5Obwo6wqNr55fU2
-7szNiBHBSs/qacJzM5xEmFsmNAvqC968iW0RQ3KpyCBRQydX8nagm4WXnkC1ES1S
-DjOnzLJ1y8zw5SkEQ33BCPUOm/0ptrxa/RZSUnQxjo5LSuE9XsOHryoE0Ik6YxSw
-ZEJep2OgM8crtUi0FrDyG86PjoS1L33C5iOOgyltuJgt7VfF6X0zJx57YbysuzwW
-AhRF7d+LfzTilyYf9LBFh2TVC6YjB73BB2u6k7G+vDtZ7XJopnkkSdEHFi/rWOZc
-S5GhgnQMyKoWF81hN55RL7B5+v0DcpT0EbyZy0mOUuhGpGrGDhUjliLv0L7JMKGF
-Ch2ed6o0mEL1GnEVFAP0ZsvtXnZF1YnGzepIpT2nu7Lx+qBPQ6yp9i3NwryrG1cX
-GYMVHF8RSHpvFi4sicVGp9S9+sCFOHEuWiPC4zIuCiRzpwm735o=
-=gRHv
+iQJOBAEBCgA4FiEExMbT8XdtGlta3xpnf46zguOry34FAmpYbh8aHHRyYXBvb215
+b3lvam9qb0BnbWFpbC5jb20ACgkQf46zguOry34tmQ/5ARo4d//7EFamKqJx/r1X
+7b8FYkF2cVNpBKGoqYjd+wuLJ6+3um/hPKPGo0fTBW1YJ4dOgBMy7MZgHHojyeZx
+AzJjgwfTPepxA2D8z5QnzhAJUXByrk5HR26Mg2O2bx+Dl2Q4cuCdM2+ncXlAkfye
+/UTi61lwI8VGF+51AlyrjZHtPZtsNqdv2yTOjfXkvZSt+xCf3WOKQzOyYxpaz0t0
+SXnhZe8HQZOAoSzlkJ9qybtUS5e7VZf4X2Fim/RAxhTi7PGLpUD+Q3jUg5NWRc9g
+ZXzXuj7SL2yF35yMgF5/pt4D6TEiG4CshookQc8HP+/CvGwJ8sw0V8hivhU35aFe
+hBezLqiFGaRdlyFYlFVDmr6Ej4vn5HIGxbKzPJHtIlEreUYmoAJ1/iWYxp9MWKdw
+Z5Rij75SSmMdBlaBNmBupjcUtoz5KOuN+da4q9UMhe1TYavqakOsFYe6n6r5XjrA
+lfkpOv7+tW7kKQUANq3qipaSaMukAkWYJN3KzZZ/x94BS16i22eh835KtX3jAzQt
+2TiFbJ5jpCeu3NJs9nF/dfwbKiZ7V1yTZcb5iZcafzu84TLeGkwNGfiIuzPjfoA4
+JtX5PIXCrACI2areRLakKZStq4DagyYwHLB2ZsVCmOACxhAM+8BQAuFQA9S+8qfr
+umofbuWm2uR1iZXlLHW4OmY=
+=zRb0
 -----END PGP SIGNATURE-----
